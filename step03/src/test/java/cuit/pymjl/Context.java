@@ -4,6 +4,8 @@ import cuit.pymjl.beans.factory.config.BeanDefinition;
 import cuit.pymjl.beans.factory.support.DefaultListableBeanFactory;
 import cuit.pymjl.entity.User;
 
+import java.util.concurrent.FutureTask;
+
 /**
  * @author Pymjl
  * @version 1.0
