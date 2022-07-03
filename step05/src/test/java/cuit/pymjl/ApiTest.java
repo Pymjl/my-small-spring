@@ -48,4 +48,12 @@ public class ApiTest {
         System.out.println("测试结果：" + result);
     }
 
+    @Test
+    public void test_url() throws IOException {
+        Resource resource = resourceLoader.getResource("https://gitee.com/pymjl_0/small-spring/blob/main/config.properties");
+        InputStream inputStream = resource.getInputStream();
+        String content = IoUtil.readUtf8(inputStream);
+        System.out.println(content);
+    }
+
 }
