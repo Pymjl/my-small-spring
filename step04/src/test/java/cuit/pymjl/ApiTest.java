@@ -23,7 +23,7 @@ public class ApiTest {
         factory.registerBeanDefinition("userDao", new BeanDefinition(UserDao.class));
         //3.添加对象的属性值
         PropertyValues propertyValues = new PropertyValues();
-        PropertyValue propertyValue = new PropertyValue("id", 6);
+        PropertyValue propertyValue = new PropertyValue("id", 1);
         PropertyValue propertyValue1 = new PropertyValue("userDao", new BeanReference("userDao"));
         propertyValues.addPropertyValue(propertyValue);
         propertyValues.addPropertyValue(propertyValue1);
