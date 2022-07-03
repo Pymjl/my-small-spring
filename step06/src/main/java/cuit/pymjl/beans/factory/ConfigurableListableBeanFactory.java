@@ -27,10 +27,15 @@ public interface ConfigurableListableBeanFactory extends ListableBeanFactory, Au
      */
     BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
+    /**
+     * 实例化BeanDefinition容器中所有对应的类
+     *
+     * @throws BeansException 豆子例外
+     */
     void preInstantiateSingletons() throws BeansException;
 
     /**
-     * 添加bean后置处理程序
+     * 将beanPostProcessor添加到容器中
      *
      * @param beanPostProcessor 豆后置处理程序
      */

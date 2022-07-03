@@ -39,7 +39,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
         refreshBeanFactory();
         // 2. 获取 BeanFactory
         ConfigurableListableBeanFactory beanFactory = getBeanFactory();
-        // 3. 在 Bean 实例化之前，执行 BeanFactoryPostProcessor (Invoke factory processors registered as beans in the context.)
+        // 3. 在 Bean 实例化之前，实例化 BeanPostProcessor 对象，执行 postProcessBeanFactory 方法
         invokeBeanFactoryPostProcessors(beanFactory);
         // 4. BeanPostProcessor 需要提前于其他 Bean 对象实例化之前执行注册操作
         registerBeanPostProcessors(beanFactory);
@@ -56,9 +56,16 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
+    /**
+     * 执行所有后置处理器
+     *
+     * @param beanFactory bean工厂
+     */
     private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
+        // 1. 获取所有 BeanFactoryPostProcessor 对象,通过类型获取
         Map<String, BeanFactoryPostProcessor> beanFactoryPostProcessorMap = beanFactory.getBeansOfType(BeanFactoryPostProcessor.class);
         for (BeanFactoryPostProcessor beanFactoryPostProcessor : beanFactoryPostProcessorMap.values()) {
+            // 2. 执行后置处理器的postProcessBeanFactory方法(用户自定义的方法)
             beanFactoryPostProcessor.postProcessBeanFactory(beanFactory);
         }
     }
@@ -66,6 +73,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
     private void registerBeanPostProcessors(ConfigurableListableBeanFactory beanFactory) {
         Map<String, BeanPostProcessor> beanPostProcessorMap = beanFactory.getBeansOfType(BeanPostProcessor.class);
         for (BeanPostProcessor beanPostProcessor : beanPostProcessorMap.values()) {
+            // 注册 自定义的BeanPostProcessor
             beanFactory.addBeanPostProcessor(beanPostProcessor);
         }
     }

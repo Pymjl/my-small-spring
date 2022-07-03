@@ -20,7 +20,7 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
     /**
-     * 在 createBean 中应用的 BeanPostProcessors
+     * 在 createBean 中应用的 BeanPostProcessors容器
      */
     private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
 

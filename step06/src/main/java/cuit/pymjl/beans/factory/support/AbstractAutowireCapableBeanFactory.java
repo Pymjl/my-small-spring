@@ -27,6 +27,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     protected Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException {
         Object bean = null;
         try {
+            // 1. 根据构造函数创建对象
             bean = createBeanInstance(beanDefinition, beanName, args);
             // 给 Bean 填充属性
             applyPropertyValues(beanName, bean, beanDefinition);
@@ -104,7 +105,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     @Override
     public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName) throws BeansException {
         Object result = existingBean;
+        // 1. 遍历注册进来的 BeanPostProcessor
         for (BeanPostProcessor processor : getBeanPostProcessors()) {
+            // 2. 执行 BeanPostProcessor 的 postProcessBeforeInitialization 方法
             Object current = processor.postProcessBeforeInitialization(result, beanName);
             if (null == current) {
                 return result;
