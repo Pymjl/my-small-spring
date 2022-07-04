@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
 
-    <bean id="userDao" class="cuit.pymjl.entity.UserDao"/>
+    <bean id="userDao" class="cuit.pymjl.entity.entity.UserDao"/>
 
     <bean id="userService" class="cuit.pymjl.entity.UserService">
         <property name="id" value="6"/>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="userDao" class="cuit.pymjl.entity.UserDao"
+          init-method="initDataMethod" destroy-method="destroyDataMethod"/>
+
+    <bean id="userService" class="cuit.pymjl.entity.UserService">
+        <property name="Id" value="10001"/>
+        <property name="company" value="字节跳动"/>
+        <property name="address" value="成都"/>
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+</beans>
