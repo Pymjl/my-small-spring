@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="userService" class="cuit.pymjl.entity.UserService" scope="prototype">
+        <property name="Id" value="10001"/>
+        <property name="company" value="字节跳动"/>
+        <property name="address" value="成都"/>
+        <property name="userDao" ref="proxyUserDao"/>
+    </bean>
+
+    <bean id="proxyUserDao" class="cuit.pymjl.entity.ProxyBeanFactory"/>
+
+</beans>
