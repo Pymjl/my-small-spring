@@ -5,6 +5,8 @@ import cuit.pymjl.event.CustomEvent;
 import cuit.pymjl.myevent.DoorEvent;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * @author Pymjl
  * @version 1.0
